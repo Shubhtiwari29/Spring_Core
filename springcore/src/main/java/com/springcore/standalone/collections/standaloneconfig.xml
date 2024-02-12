@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--We are going to use Standalone list, so that you can use same array list multiple time with have to create separate array list for every use  -->
+
+<util:list list-class="java.util.LinkedList" id="mybestfriends">
+	<value>Ram</value>
+	<value>Krishna</value>
+	<value>Hanuman</value>
+	<value>Ganesh</value>
+</util:list>
+
+<!--Standalone Map  -->
+
+<util:map map-class="java.util.HashMap" id="fees">
+	<entry key="Java" value="5000"/>
+	<entry key="React" value="4500"/>
+	<entry key="Python" value="4800"/>
+</util:map>
+
+<!--Standalone Properties  -->
+
+<util:properties id="dbconfig">
+	<prop key="driver">com.mysql.jdbc.Driver</prop>
+	<prop key="username">Shubham</prop>
+	<prop key="password">shubham29</prop>
+</util:properties>
+
+
+	<bean class="com.springcore.standalone.collections.Person" name="person">
+		<!-- <property name="friends">
+			<ref bean="mybestfriends"/>
+		</property> -->
+		
+		<property name="friends" ref="mybestfriends"/>
+		<property name="feestructure" ref="fees"/>
+		<property name="properties" ref="dbconfig"/>
+	</bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean class="com.springcore.autowire.Address" name="addressObject">
+<!-- NOTE-> name of the object and bean name in the xml file must be same. Here the bean name is addressObject -->
+		<property name="street" value="Kartavya Path"/>
+		<property name="city" value="Delhi"/>
+	</bean>
+	
+	<bean class="com.springcore.autowire.Employee" name="employee" autowire="byName"/>
+<!--NOTE->Here we have used autowire tag and gave the 'byName' []which is addressObject, so basically spring has searched for the reference variable[here it's addressObject] with the exact name in the file/class which is dependent here that is Employee class  
+and in the employee class spring found the reference variable name which exactly the same we have mentioned in the autowire tag above. -->
+
+<!--NOTE-> So instead of'byname'if you use 'byType' than spring will look for type of reference variable (in this example reference variable name is addressObject)[spring will refer class name] here it's Address in the dependent class i.e employee   -->
+
+<!--NOTE->And instead of 'byName' or 'byType' we can use 'byConstructor' in the autowire tag, it will just look for the constructor. -->
+
+</beans>
